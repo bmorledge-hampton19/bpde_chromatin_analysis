@@ -9,10 +9,12 @@ from benbiohelpers.TkWrappers.TkinterDialog import TkinterDialog
 from benbiohelpers.FileSystemHandling.DirectoryHandling import getTempDir
 
 
-def getBPDE_DamagePositionsFromAlignedReads(alignedReadsFilePaths: List[str], genomeFastaFilePath, isSingleEnd = False):
+def getBPDE_DamagePositionsFromAlignedReads(alignedReadsFilePaths: List[str], genomeFastaFilePath, isSingleEnd = False) -> List[str]:
     """
     This function takes a list of bed file paths for aligned reads and converts them to bed files of the expected BPDE lesion positions (-1 relative to 5' end)
     """
+
+    BPDE_PositionsFilePaths = list()
 
     # Iterate through the given file paths.
     for alignedReadsFilePath in alignedReadsFilePaths:
@@ -22,6 +24,7 @@ def getBPDE_DamagePositionsFromAlignedReads(alignedReadsFilePaths: List[str], ge
         # Create the path to the output file.
         basename = os.path.basename(alignedReadsFilePath).rsplit(".bed",1)[0]
         BPDE_PositionsFilePath = os.path.join(os.path.dirname(alignedReadsFilePath), basename + "_BPDE_damage_pos.bed")
+        BPDE_PositionsFilePaths.append(BPDE_PositionsFilePath)
 
         # Create the intermediate file with the expected BPDE positions
         print("Retrieving expected BPDE positions...")
@@ -51,6 +54,8 @@ def getBPDE_DamagePositionsFromAlignedReads(alignedReadsFilePaths: List[str], ge
         # Add information on the nucleotide base present at the expected BPDE position.
         print("Retrieving bases at expected BPDE positions...")
         addSequenceToBed(BPDE_PositionsFilePath, genomeFastaFilePath)
+
+    return BPDE_PositionsFilePaths
 
 
 def main():
