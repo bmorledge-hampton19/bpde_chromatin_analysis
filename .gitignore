@@ -165,4 +165,4 @@ cython_debug/
 test.*
 
 # Data files
-data/
+BPDE_data/
