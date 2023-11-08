@@ -6,7 +6,7 @@ import os
 from typing import List
 from benbiohelpers.FileSystemHandling.AddSequenceToBed import addSequenceToBed
 from benbiohelpers.TkWrappers.TkinterDialog import TkinterDialog
-from benbiohelpers.FileSystemHandling.DirectoryHandling import getTempDir
+from bpde_chromatin_analysis.helper_scripts.BPDE_DataDir import getDataDir
 
 
 def getBPDE_DamagePositionsFromAlignedReads(alignedReadsFilePaths: List[str], genomeFastaFilePath, isSingleEnd = False) -> List[str]:
@@ -61,12 +61,12 @@ def getBPDE_DamagePositionsFromAlignedReads(alignedReadsFilePaths: List[str], ge
 def main():
 
     # Create the Tkinter UI
-    with TkinterDialog(workingDirectory = os.getenv("HOME"), title = "Get BPDE Positions From Aligned Reads") as dialog:
+    with TkinterDialog(workingDirectory = getDataDir(), title = "Get BPDE Positions From Aligned Reads") as dialog:
         dialog.createMultipleFileSelector("Aligned Reads Files:", 0, "all_reps.bed", ("Bed Files",".bed"))    
-        dialog.createFileSelector("Genome Fasta File:",1,("Fasta Files",".fa"))
+        dialog.createGenomeSelector(1, 0)
         dialog.createCheckbox("Input is single-end", 2, 0)
 
-    getBPDE_DamagePositionsFromAlignedReads(dialog.selections.getFilePathGroups()[0], dialog.selections.getFilePaths()[0],
+    getBPDE_DamagePositionsFromAlignedReads(dialog.selections.getFilePathGroups()[0], dialog.selections.getGenomes(returnType="fasta")[0],
                                             dialog.selections.getToggleStates()[0])
 
 
