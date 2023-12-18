@@ -11,7 +11,8 @@ from bpde_chromatin_analysis.helper_scripts.BPDE_DataDir import getDataDir
 
 def getBPDE_DamagePositionsFromAlignedReads(alignedReadsFilePaths: List[str], genomeFastaFilePath, isSingleEnd = False) -> List[str]:
     """
-    This function takes a list of bed file paths for aligned reads and converts them to bed files of the expected BPDE lesion positions (-1 relative to 5' end)
+    This function takes a list of bed file paths for formatted damage reads and
+    converts them to bed files of the expected BPDE lesion positions (-1 relative to 5' end)
     """
 
     BPDE_PositionsFilePaths = list()
@@ -34,7 +35,9 @@ def getBPDE_DamagePositionsFromAlignedReads(alignedReadsFilePaths: List[str], ge
                 splitLine = line.split()
 
                 # Make sure we only work with the first read in each pair
-                if not isSingleEnd and splitLine[3].endswith('2'): continue
+                if not isSingleEnd and splitLine[3].endswith("/2"):
+                    print("WARNING: Found read 2 in paired-end read. Are you sure the reads have been formatted?")
+                    continue
 
                 # Adjust the positions to fit the expected BPDE position
                 if splitLine[5] == '+':
@@ -62,7 +65,7 @@ def main():
 
     # Create the Tkinter UI
     with TkinterDialog(workingDirectory = getDataDir(), title = "Get BPDE Positions From Aligned Reads") as dialog:
-        dialog.createMultipleFileSelector("Aligned Reads Files:", 0, "all_reps.bed", ("Bed Files",".bed"))    
+        dialog.createMultipleFileSelector("Aligned Reads Files:", 0, "formatted.bed", ("Bed Files",".bed"))    
         dialog.createGenomeSelector(1, 0)
         dialog.createCheckbox("Input is single-end", 2, 0)
 
