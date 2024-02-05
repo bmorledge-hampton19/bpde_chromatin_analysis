@@ -1,2 +1,4 @@
 It probably would have been smarter to organize these notebooks by analysis type instead of data set.
 Right now, I'm doing a lot of copying and pasting since the notebooks look very similar between data sets.
+
+Also, any pre-formatting that is common to analyses (e.g., parsing data for mutperiod) should be done in its own notebook, so it doesn't have to be repeated for each analysis.
