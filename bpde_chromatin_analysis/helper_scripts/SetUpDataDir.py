@@ -13,7 +13,7 @@ def setUpDataDir():
     BPDE_DataDir = getDataDir()
 
     mutationDataDir = os.path.join(BPDE_DataDir, "Alexandrov_LUAD")
-    damageDataDirs = [os.path.join(BPDE_DataDir, "Jiang_BPDE_damage_maps", dataSet) for dataSet in ("BEAS-2B_2uM_BPDE_cell_24h", "BEAS-2B_2uM_BPDE_naked_24h")]
+    damageDataDirs = [os.path.join(BPDE_DataDir, "Jiang_BPDE_damage_maps", dataSet) for dataSet in ("BEAS-2B_2uM_BPDE_cell_24h", "BEAS-2B_2uM_BPDE_nDNA_24h")]
     repairDataDir = os.path.join(BPDE_DataDir, "Li_tXR-seq")
     nucleosomeRelativeDataDirs = [os.path.join(BPDE_DataDir, "relative_nucleosome_patterns", nucMap) for nucMap in ("hybrid", "LCL_MNase")]
     TFBS_RelativeDataDirs = [os.path.join(BPDE_DataDir, "relative_TFBS_patterns", tf) for tf in ("CTCF", "SP1")]
