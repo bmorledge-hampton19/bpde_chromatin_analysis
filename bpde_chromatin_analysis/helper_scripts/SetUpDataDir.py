@@ -1,3 +1,7 @@
+# This script is meant to be used by third parties interested in reproducing this analysis.
+# It creates the necessary directory trees for the data used in the Jupyter notebooks.
+# Note that the actual data still needs to be supplied to the directories.
+
 import os
 from bpde_chromatin_analysis.helper_scripts.BPDE_DataDir import getDataDir
 from mutperiodpy.helper_scripts.UsefulFileSystemFunctions import getExternalDataDirectory as getMutperiodExternalDataDirectory
