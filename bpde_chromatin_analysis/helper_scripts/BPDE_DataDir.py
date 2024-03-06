@@ -29,3 +29,12 @@ class BPDE_DataDir(DataDir):
         """
 
         return os.path.join(dataDirectoryDirectory,"BPDE_data")
+    
+
+    @staticmethod
+    def _getPackageName():
+        """
+        Returns the name of the package, which will be used in the tkinter dialog when asking to create the data directory.
+        """
+
+        return "BPDE Chromatin Analysis"
