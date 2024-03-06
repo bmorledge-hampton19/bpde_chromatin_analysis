@@ -27,8 +27,9 @@ def setUpDataDir():
     mutperiodLCL_MNaseNucMapDir = os.path.join(mutperiodHg19Dir, "hg19_LCL_MNase_nuc_map")
     mutperiodCTCFDir = os.path.join(mutperiodHg19Dir, "hg19_CTCF_known")
     mutperiodSP1Dir = os.path.join(mutperiodHg19Dir, "hg19_SP1_known")
+    mutperiodTSSDir = os.path.join(mutperiodHg19Dir, "hg19_genic_regions_unnamed_TSSs")
 
-    checkDirs(mutperiodHybridNucMapDir, mutperiodLCL_MNaseNucMapDir, mutperiodCTCFDir, mutperiodSP1Dir)
+    checkDirs(mutperiodHybridNucMapDir, mutperiodLCL_MNaseNucMapDir, mutperiodCTCFDir, mutperiodSP1Dir, mutperiodTSSDir)
 
     def createAppendToDataNameFile(directory, dataNameToAppend):
         with open(os.path.join(directory, "append_to_data_name.txt"), 'w') as appendToDataNameFile:
@@ -38,6 +39,7 @@ def setUpDataDir():
     createAppendToDataNameFile(mutperiodLCL_MNaseNucMapDir, "_LCL_MNase_map")
     createAppendToDataNameFile(mutperiodCTCFDir, "_CTCF_known")
     createAppendToDataNameFile(mutperiodSP1Dir, "_SP1_known")
+    createAppendToDataNameFile(mutperiodTSSDir, "_TSSs")
 
 
 if __name__ == "__main__": setUpDataDir()
