@@ -27,7 +27,7 @@ def setUpDataDir():
     mutperiodLCL_MNaseNucMapDir = os.path.join(mutperiodHg19Dir, "hg19_LCL_MNase_nuc_map")
     mutperiodCTCFDir = os.path.join(mutperiodHg19Dir, "hg19_CTCF_known")
     mutperiodSP1Dir = os.path.join(mutperiodHg19Dir, "hg19_SP1_known")
-    mutperiodTSSDir = os.path.join(mutperiodHg19Dir, "hg19_genic_regions_unnamed_TSSs")
+    mutperiodTSSDir = os.path.join(mutperiodHg19Dir, "hg19_protein_coding_genes_TSSs")
 
     checkDirs(mutperiodHybridNucMapDir, mutperiodLCL_MNaseNucMapDir, mutperiodCTCFDir, mutperiodSP1Dir, mutperiodTSSDir)
 

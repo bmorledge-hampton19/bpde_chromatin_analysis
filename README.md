@@ -70,7 +70,7 @@ All inputs need to be provided manually, with the proper names and in the proper
 - The SP1 binding sites should be copied to `BPDE_data/relative_TFBS_patterns/SP1/hg19_SP1_known.bed` and `mutperiod_data/__external_data/hg19/hg19_SP1_known/hg19_SP1_known.bed`
 
 #### Transcription start sites
-- The transcription start sites should be copied to `mutperiod_data/__external_data/hg19/hg19_genic_regions_unnamed_TSSs/hg19_genic_regions_unnamed_TSSs.bed`
+- The transcription start sites should be copied to `mutperiod_data/__external_data/hg19/hg19_protein_coding_genes_TSSs/hg19_protein_coding_genes_TSSs.bed`
 
 #### Removing blacklisted regions
 Using the benbiohelpers [RemoveBlacklistedRegions.py](https://github.com/bmorledge-hampton19/benbiohelpers/blob/main/python/benbiohelpers/FileSystemHandling/RemoveBlacklistedRegions.py) script, all nucleosome, transcription factor, and transcription start site files should be filtered using the ENCODE blacklisted regions in a 1000 bp radius. Note that all input files must be sorted alphabetically on the first column and numerically on the second and third columns (prioritized in that order). The transcription factor binding site and transcription start site files in the [maintained_data](/maintained_data/) folder of this repository have already been filtered this way.
@@ -118,5 +118,5 @@ Once all the input data has been properly formatted, the following [jupyter note
 - DNase-seq data: [https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31388](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31388)
 - CTCF binding sites: [/maintained_data/hg19_CTCF_known.bed](/maintained_data/hg19_CTCF_known.bed)
 - SP1 binding sites: [/maintained_data/hg19_SP1_known.bed](/maintained_data/hg19_SP1_known.bed)
-- Transcription start sites: [/maintained_data/hg19_genic_regions_unnamed_TSSs.bed](/maintained_data/hg19_genic_regions_unnamed_TSSs.bed)
+- Transcription start sites: [/maintained_data/hg19_protein_coding_genes_TSSs.bed](/maintained_data/hg19_protein_coding_genes_TSSs.bed)
 - ENCODE blacklist: [https://github.com/Boyle-Lab/Blacklist/blob/master/lists/hg19-blacklist.v2.bed.gz](https://github.com/Boyle-Lab/Blacklist/blob/master/lists/hg19-blacklist.v2.bed.gz)
