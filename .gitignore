@@ -166,3 +166,4 @@ test.*
 
 # Data files
 BPDE_data/
+rotational_nucleosome_designations.txt
