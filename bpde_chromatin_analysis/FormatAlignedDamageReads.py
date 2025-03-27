@@ -36,7 +36,8 @@ def formatAlignedDamageReads(alignedDamageReadsFilePaths: List[str]):
         read2FilteredFilePath = combinedReadsFilePath.rsplit(".bed",1)[0] + "_read_2_filtered.bed"
         with open(combinedReadsFilePath, 'r') as combinedReadsFile, open(read2FilteredFilePath, 'w') as read2FilteredFile:
             for line in combinedReadsFile:
-                if not line.split()[3].endswith('2'): read2FilteredFile.write(line)
+                if line.split()[3].endswith('/2'): continue
+                else: read2FilteredFile.write(line)
 
         # Sort file and remove duplicates (sorting is necessary for duplicate removal)
         print("Sorting...")
