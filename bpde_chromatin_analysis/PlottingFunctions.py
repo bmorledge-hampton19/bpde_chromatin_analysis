@@ -117,6 +117,25 @@ def plotDamageAndRepair(damageData: pandas.DataFrame, repairData: pandas.DataFra
                            dropZeroRows, smoothData, overlaySmoothedAndNormal)
 
 
+def plotDamageRepairAndMutagenesis(
+        damageData: pandas.DataFrame, repairData: pandas.DataFrame, mutationData: pandas.DataFrame, dataColumn = "Normalized_Both_Strands",
+        title = "Damage vs. Repair", xAxisLabel = "Position Relative to Feature (bp)", yAxisLabel = "Normalized Damage/Repair Activity",
+        xlim = None, ylim = None, dropZeroRows = True, smoothData = True, overlaySmoothedAndNormal = True,
+        damageColor = PlottingColors.DAMAGE.value, underlaidDamageColor = PlottingColors.DAMAGE_UNDERLAY.value,
+        repairColor = PlottingColors.REPAIR.value, underlaidRepairColor = PlottingColors.REPAIR_UNDERLAY.value,
+        mutationColor = PlottingColors.MUTATION.value, underlaidMutationColor = PlottingColors.MUTATION_UNDERLAY.value
+    ):
+    """
+    Plot damage, repair, and mutations together using the generalizable plotting function
+    """
+    damagePlottable = Plottable(damageData, dataColumn, "Damage", damageColor, underlaidDamageColor)
+    repairPlottable = Plottable(repairData, dataColumn, "Repair", repairColor, underlaidRepairColor)
+    mutationPlottable = Plottable(mutationData, dataColumn, "Mutations", mutationColor, underlaidMutationColor)
+    return generalPlotting([damagePlottable, repairPlottable, mutationPlottable],
+                           title, xAxisLabel, yAxisLabel, xlim, ylim,
+                           dropZeroRows, smoothData, overlaySmoothedAndNormal)
+
+
 def plotSingleFeature(data: pandas.DataFrame, dataColumn = "Normalized_Both_Strands",
                       title = "Misc Data", xAxisLabel = "Position Relative to Feature (bp)", yAxisLabel = "Counts",
                       xlim = None, ylim = None, dropZeroRows = True, smoothData = True, overlaySmoothedAndNormal = True,
