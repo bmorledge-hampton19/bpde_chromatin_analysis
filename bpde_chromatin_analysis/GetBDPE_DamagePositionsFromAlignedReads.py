@@ -41,6 +41,9 @@ def getBPDE_DamagePositionsFromAlignedReads(alignedReadsFilePaths: List[str], ge
 
                 # Adjust the positions to fit the expected BPDE position
                 if splitLine[5] == '+':
+                    if int(splitLine[1]) == 0:
+                        print("Skipping read with negative putative lesion position:\n" + line.strip())
+                        continue
                     splitLine[2] = splitLine[1]
                     splitLine[1] = str(int(splitLine[1]) - 1)
                 else:
