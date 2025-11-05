@@ -119,7 +119,7 @@ def plotDamageAndRepair(damageData: pandas.DataFrame, repairData: pandas.DataFra
 
 def plotDamageRepairAndMutagenesis(
         damageData: pandas.DataFrame, repairData: pandas.DataFrame, mutationData: pandas.DataFrame, dataColumn = "Normalized_Both_Strands",
-        title = "Damage vs. Repair", xAxisLabel = "Position Relative to Feature (bp)", yAxisLabel = "Normalized Damage/Repair Activity",
+        title = "Damage vs. Repair", xAxisLabel = "Position Relative to Feature (bp)", yAxisLabel = "Enrichment",
         xlim = None, ylim = None, dropZeroRows = True, smoothData = True, overlaySmoothedAndNormal = True,
         damageColor = PlottingColors.DAMAGE.value, underlaidDamageColor = PlottingColors.DAMAGE_UNDERLAY.value,
         repairColor = PlottingColors.REPAIR.value, underlaidRepairColor = PlottingColors.REPAIR_UNDERLAY.value,
