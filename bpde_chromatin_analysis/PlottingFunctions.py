@@ -156,6 +156,17 @@ def plotFeatureWithCustomNucleosomes(data: pandas.DataFrame, nucleosomePositions
     Plots a single arbitrary feature with coloring for given nucleosome positions.
     Uses the generalizable plotting function.
     """
+
+
+    return generalPlotting([getCustomNucleosomePlottable(data, nucleosomePositions, dataColumn, nucleosomeColorPalette, blacklistedRegions)],
+                           title, xAxisLabel, yAxisLabel, xlim, ylim,
+                           dropZeroRows, smoothData, overlaySmoothedAndNormal)
+
+def getCustomNucleosomePlottable(data: pandas.DataFrame, nucleosomePositions: List[int], dataColumn = "Normalized_Both_Strands",
+                                 nucleosomeColorPalette = NucleosomeColorPalette(), blacklistedRegions = None) -> Plottable:
+    """
+    Returns a Plottable object with custom nucleosome coloring
+    """
     data = data.copy()
     data["Color"] = nucleosomeColorPalette.linker
     data["Underlaid_Color"] = nucleosomeColorPalette.linkerUnderlaid
@@ -166,10 +177,10 @@ def plotFeatureWithCustomNucleosomes(data: pandas.DataFrame, nucleosomePositions
         data.loc[data["Dyad_Position"].isin(range(nucleosomePosition-73,nucleosomePosition+73+1)),"Color"] = nucleosomeColorPalette.nucleosomal
         data.loc[data["Dyad_Position"].isin(range(nucleosomePosition-73,nucleosomePosition+73+1)),"Underlaid_Color"] = nucleosomeColorPalette.nucleosomalUnderlaid
 
-    return generalPlotting([Plottable(data, dataColumn, " ", None, None, "Color", "Underlaid_Color",
-                                      {nucleosomeColorPalette.nucleosomal:"Nucleosomal", nucleosomeColorPalette.linker:"Linker"})],
-                           title, xAxisLabel, yAxisLabel, xlim, ylim,
-                           dropZeroRows, smoothData, overlaySmoothedAndNormal)
+    return Plottable(
+        data, dataColumn, " ", None, None, "Color", "Underlaid_Color",
+        {nucleosomeColorPalette.nucleosomal:"Nucleosomal", nucleosomeColorPalette.linker:"Linker"}
+    )
 
 
 def plotReadLengthDistribution(data: pandas.DataFrame, readLengthDataCol = "Sequence_Length", readCountsDataCol = "Read_Count",
