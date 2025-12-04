@@ -66,17 +66,17 @@ def generalPlotting(plottables: List[Plottable],
             plot = plot + geom_path(aes(y = plottable.dataColumn, color = f"{colorString}"), plottable.dataFrame, size = 1, group = 1, lineend = "round")
 
     if len(plottables) > 1:
+        breaks = list()
+        labels = list()
+        for plottable in plottables:
+            if plottable.columnColorBreaksAndLabels is not None:
+                breaks += plottable.columnColorBreaksAndLabels.keys()
+                labels += plottable.columnColorBreaksAndLabels.values()
+            else:
+                breaks.append(plottable.color)
+                labels.append(plottable.label)
         plot = (plot +
-            scale_color_identity(guide = "legend", name = " ",
-                                 breaks = [plottable.color for plottable in plottables],
-                                 labels = [plottable.label for plottable in plottables]) +
-            theme(figure_size = (12,6))
-        )
-    elif plottables[0].columnColorBreaksAndLabels is not None:
-        plot = (plot +
-            scale_color_identity(guide = "legend", name = " ",
-                                 breaks = list(plottables[0].columnColorBreaksAndLabels.keys()),
-                                 labels = list(plottables[0].columnColorBreaksAndLabels.values())) +
+            scale_color_identity(guide = "legend", name = " ", breaks = breaks, labels = labels) +
             theme(figure_size = (12,6))
         )
     else: plot = plot + scale_color_identity(guide = None, name = " ") + theme(figure_size=(9,6))
