@@ -60,6 +60,8 @@ runAnalysisSuite(lcMutationMutperiodInputFilePaths, TFBS_Names, normalizationMet
 # Run TSS analysis
 TSS_FilePaths = list()
 TSS_FilePaths.append(os.path.join(mutperiodHg19Directory, "hg19_protein_coding_genes_TSSs", "hg19_protein_coding_genes_TSSs.bed"))
+TSS_FilePaths.append(os.path.join(mutperiodHg19Directory, "hg19_protein_coding_genes_TSSs_A549_high_expression", "hg19_protein_coding_genes_TSSs_A549_high_expression.bed"))
+TSS_FilePaths.append(os.path.join(mutperiodHg19Directory, "hg19_protein_coding_genes_TSSs_A549_low_expression", "hg19_protein_coding_genes_TSSs_A549_low_expression.bed"))
 
 TSS_Names = [os.path.basename(TSS_FilePath).rsplit('.', 1)[0] for TSS_FilePath in TSS_FilePaths]
 
